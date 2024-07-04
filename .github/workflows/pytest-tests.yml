@@ -28,11 +28,20 @@ jobs:
     - name: Set PYTHONPATH for FreeCAD
       run: echo "PYTHONPATH=/usr/lib/freecad/lib:\$PYTHONPATH" >> $GITHUB_ENV
 
+    - name: Log PYTHONPATH
+      run: echo "PYTHONPATH is $PYTHONPATH"
+
     - name: Install Python dependencies
       run: |
         python -m venv testing-env
         source testing-env/bin/activate
         pip install -r requirements.txt
+
+    - name: Check Python and FreeCAD installation
+      run: |
+        source testing-env/bin/activate
+        python --version
+        python -c "import FreeCAD; print('FreeCAD imported successfully')"
 
     - name: Run tests
       run: |
