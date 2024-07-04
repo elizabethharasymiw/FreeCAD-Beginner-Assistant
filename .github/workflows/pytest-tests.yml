@@ -26,7 +26,7 @@ jobs:
         sudo apt-get install -y freecad freecad-python3
 
     - name: Set PYTHONPATH for FreeCAD
-      run: echo "/usr/lib/freecad/lib" >> $GITHUB_ENV
+      run: echo "PYTHONPATH=/usr/lib/freecad/lib:\$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Install Python dependencies, and run tests
       run: |
