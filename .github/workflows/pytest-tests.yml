@@ -1,0 +1,30 @@
+name: FreeCAD Addon Tests
+
+on:
+  push:
+    branches: [ "testing-main" ]
+  pull_request:
+    branches: [ "testing-main" ]
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install FreeCAD dependencies
+      run: sudo apt-get install -y freecad-python3
+
+    - name: Install Python dependencies, and run tests
+      run: |
+        python -m venv testing-env
+        source testing-env/bin/activate
+        pip install -r requirements.txt
+        pytest
