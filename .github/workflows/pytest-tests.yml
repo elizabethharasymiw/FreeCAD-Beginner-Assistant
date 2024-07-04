@@ -41,7 +41,7 @@ jobs:
       run: |
         source testing-env/bin/activate
         python --version
-        python -c "import FreeCAD; print('FreeCAD imported successfully')"
+        python -c "import FreeCAD"
 
     - name: Run tests
       run: |
