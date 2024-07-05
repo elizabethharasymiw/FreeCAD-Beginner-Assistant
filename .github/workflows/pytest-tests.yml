@@ -25,6 +25,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y freecad freecad-python3
 
+    - name: Verify FreeCAD installation
+      run: |
+        which freecad
+        ls -l /usr/bin/freecad
+      shell: bash
+
     - name: All Steps
       run: |
         echo "/usr/lib/freecad/lib" >> $GITHUB_ENV
