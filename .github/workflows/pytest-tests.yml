@@ -27,7 +27,9 @@ jobs:
 
     - name: All Steps
       run: |
+        echo "/usr/lib/freecad/lib" >> $GITHUB_ENV
         echo "PYTHONPATH=/usr/lib/freecad/lib:\$PYTHONPATH" >> $GITHUB_ENV
+        echo "LD_LIBRARY_PATH=/usr/lib/freecad/lib:\$LD_LIBRARY_PATH" >> $GITHUB_ENV
         python -m venv testing-env
         source testing-env/bin/activate
         pip install -r requirements.txt
